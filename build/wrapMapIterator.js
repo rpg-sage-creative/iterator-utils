@@ -1,9 +1,6 @@
 export function wrapMapIterator(original, valueFn) {
     const array = Array.from(original);
     const wrapped = {
-        [Symbol.dispose]() {
-            array.length = 0;
-        },
         [Symbol.iterator]() {
             return this;
         },

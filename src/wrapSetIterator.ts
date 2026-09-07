@@ -1,11 +1,8 @@
 type ValueFn<T, U> = (value: T) => { skip:boolean; value:U; };
 
-export function wrapSetIterator<T, U>(original: ArrayLike<T> | SetIterator<T>, valueFn: ValueFn<T, U>): SetIterator<U> {
+export function wrapSetIterator<T, U>(original: ArrayLike<T> | SetIterator<T>, valueFn: ValueFn<T, U>): Iterator<U> {
 	const array = Array.from(original);
-	const wrapped: SetIterator<U> = {
-		[Symbol.dispose]() {
-			array.length = 0;
-		},
+	const wrapped: Iterator<U> & Iterable<U> = {
 		[Symbol.iterator]() {
 			return this;
 		},
