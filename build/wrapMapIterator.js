@@ -16,6 +16,8 @@ export function wrapMapIterator(original, valueFn) {
             }
             return { value: undefined, done: true };
         }
+        // return?(value?: TReturn): IteratorResult<T, TReturn>;
+        // throw?(e?: any): IteratorResult<T, TReturn>;
     };
     return wrapped;
 }
