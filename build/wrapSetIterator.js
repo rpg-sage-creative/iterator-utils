@@ -1,9 +1,6 @@
 export function wrapSetIterator(original, valueFn) {
     const array = Array.from(original);
-    const wrapped = {
-        [Symbol.iterator]() {
-            return this;
-        },
+    return Iterator.from({
         next: () => {
             while (array.length) {
                 const { value, skip } = valueFn(array.shift());
@@ -13,8 +10,5 @@ export function wrapSetIterator(original, valueFn) {
             }
             return { value: undefined, done: true };
         }
-        // return?(value?: TReturn): IteratorResult<T, TReturn>;
-        // throw?(e?: any): IteratorResult<T, TReturn>;
-    };
-    return wrapped;
+    });
 }

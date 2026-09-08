@@ -56,12 +56,9 @@
 			}
 		},
 		{
-			"label": "run-dot-ts",
-			"command": "bash",
-			"args": [
-				"./scripts/test-src-ts-file.sh",
-				"${file}"
-			],
+			"label": "test-src-dot-ts",
+			"command": "pnpm",
+			"args": [ "dev-scripts", "test-src-ts-file", "${file}"],
 			"type": "shell",
 			"group": {
 				"kind": "test",
